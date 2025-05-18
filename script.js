@@ -15,7 +15,8 @@ function addEmployee() {
   }
 
   if (name === "" || profession === "" || age === "") {
-    message.innerText = "Error : Please make sure all the fields are filled before adding an employee!";
+    message.innerText =
+      "Error : Please make sure all the fields are filled before adding an employee!";
     message.style.color = "red";
     return;
   } else {
@@ -24,37 +25,38 @@ function addEmployee() {
     if (zeroE) zeroE.remove();
   }
 
-  
   let newDiv = document.createElement("div");
   newDiv.className = "employee-card";
 
-  
-  let newEmployeeSRNo = document.createElement("p");
-  newEmployeeSRNo.className="newEmployeeSRNo";
   let newEmployeeName = document.createElement("p");
-  newEmployeeName.className="newEmployeeName"
+  newEmployeeName.className = "newEmployeeName";
   let newEmployeeProfession = document.createElement("p");
-  newEmployeeProfession.className="newEmployeeProfession"
+  newEmployeeProfession.className = "newEmployeeProfession";
   let newEmployeeAge = document.createElement("p");
-  newEmployeeAge.className="newEmployeeAge";
+  newEmployeeAge.className = "newEmployeeAge";
+  let dltBtn = document.createElement("button");
+  dltBtn.className = "delete-btn";
 
-  newEmployeeSRNo.innerText = `${count}.`;
   newEmployeeName.innerText = `Name: ${name}`;
   newEmployeeProfession.innerText = `Profession: ${profession}`;
   newEmployeeAge.innerText = `Age: ${age}`;
+  dltBtn.innerText = "Delete User";
 
-  
-  newDiv.appendChild(newEmployeeSRNo);
+  dltBtn.onclick = function () {
+    newDiv.remove();
+    dltBtn.remove();
+  };
+
+  // newDiv.appendChild(newEmployeeSRNo);
   newDiv.appendChild(newEmployeeName);
   newDiv.appendChild(newEmployeeProfession);
   newDiv.appendChild(newEmployeeAge);
 
-  
   container.appendChild(newDiv);
+  container.appendChild(dltBtn);
 
   count++;
 
-  
   document.getElementById("name").value = "";
   document.getElementById("profession").value = "";
   document.getElementById("age").value = "";
